@@ -1,0 +1,30 @@
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\le\Hero Simple Application1.exe
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\be\Hero Simple Application1.exe
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\le\Hero Simple Application1.pdb
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\be\Hero Simple Application1.pdb
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\Hero Simple Application1.exe
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\Hero Simple Application1.pdb
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\le\Hero Simple Application1.pe
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\le\Hero Simple Application1.pdbx
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\be\Hero Simple Application1.pe
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\be\Hero Simple Application1.pdbx
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\LE\CTRE.pe
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\LE\ctre_netmf_native.pe
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\BE\CTRE.pe
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\BE\ctre_netmf_native.pe
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\LE\CTRE.pdbx
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\LE\ctre_netmf_native.pdbx
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\BE\CTRE.pdbx
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\BE\ctre_netmf_native.pdbx
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\CTRE.dll
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\ctre_netmf_native.dll
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\CTRE.pdb
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\ctre_netmf_native.pdb
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\obj\Debug\Hero Simple Application1.csprojResolveAssemblyReference.cache
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\obj\Debug\TinyCLR_DebugReferences.cache
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\obj\Debug\be\Hero Simple Application1.pe
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\obj\Debug\be\Hero Simple Application1.pdbx
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\obj\Debug\le\Hero Simple Application1.pe
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\obj\Debug\le\Hero Simple Application1.pdbx
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\obj\Debug\Hero Simple Application1.exe
+E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\obj\Debug\Hero Simple Application1.pdb
