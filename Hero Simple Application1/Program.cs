@@ -16,16 +16,22 @@ namespace Hero_Simple_Application1
             talon.SetSensorDirection(false);
             talon.SetVoltageRampRate(0.0f);
 
-            /* simple counter to print and watch using the debugger */
+			double time_per_voltage = 10.;
+
+			double[] voltages = new double[] {0, 4, 6, 8, -10, 10, 3};
+            
+			/* simple counter to print and watch using the debugger */
             int counter = 0;
             /* loop forever */
+            double time_last = DateTime.Now.Minute * 60 + DateTime.Now.Second + DateTime.Now.Millisecond / 1000.0;
             while (true)
             {
                 /* print the three analog inputs as three columns */
                 //Debug.Print("Counter Value: " + counter);
                 CTRE.Watchdog.Feed();
 
-                talon.Set(0.0f); //low ish voltage
+				
+
                 /* increment counter */
                 ++counter; /* try to land a breakpoint here and hover over 'counter' to see it's current value.  Or add it to the Watch Tab */
 
@@ -33,7 +39,19 @@ namespace Hero_Simple_Application1
                 //using(System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Public\TestFolder\data.srv"))
                 //{
                 double seconds = DateTime.Now.Minute * 60 + DateTime.Now.Second + DateTime.Now.Millisecond / 1000.0;
-                //CTRE.TalonSrx.VelocityMeasurementPeriod.Period_100Ms period;
+				        
+				int index = Math.Floor((seconds - time_last) / time_per_voltage );
+
+				double voltage = 0;
+	
+				if(index < voltages.size())
+				{   
+					voltage = voltages[index];
+
+				}
+				talon.Set(0.0f); //low ish voltage
+	
+				//CTRE.TalonSrx.VelocityMeasurementPeriod.Period_100Ms period;
                 Debug.Print(seconds.ToString() + "," + talon.GetPosition().ToString() + "," + talon.GetSpeed().ToString() + "," + talon.GetOutputVoltage().ToString() + "," + talon.GetOutputCurrent().ToString());
                 //talon.SetVelocityMeasurementPeriod(CTRE.TalonSrx.VelocityMeasurementPeriod.Period_10Ms);
                 //  file.WriteLine(seconds.ToString() + "," + talon.GetPosition().ToString() + "," + talon.GetSpeed().ToString());
