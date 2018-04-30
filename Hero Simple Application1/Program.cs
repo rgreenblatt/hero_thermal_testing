@@ -16,7 +16,7 @@ namespace Hero_Simple_Application1
             talon.SetSensorDirection(false);
             talon.SetVoltageRampRate(0.0f);
 
-			double time_per_voltage = 10.;
+			double time_per_voltage = 10.0;
 
 			double[] voltages = new double[] {0, 4, 6, 8, -10, 10, 3};
             
@@ -40,19 +40,21 @@ namespace Hero_Simple_Application1
                 //{
                 double seconds = DateTime.Now.Minute * 60 + DateTime.Now.Second + DateTime.Now.Millisecond / 1000.0;
 				        
-				int index = Math.Floor((seconds - time_last) / time_per_voltage );
+				int index = (int)System.Math.Floor((seconds - time_last) / time_per_voltage );
 
 				double voltage = 0;
 	
-				if(index < voltages.size())
+				if(index < voltages.Length)
 				{   
 					voltage = voltages[index];
 
 				}
-				talon.Set(0.0f); //low ish voltage
+				talon.Set((float)voltage); //low ish voltage
 	
 				//CTRE.TalonSrx.VelocityMeasurementPeriod.Period_100Ms period;
                 Debug.Print(seconds.ToString() + "," + talon.GetPosition().ToString() + "," + talon.GetSpeed().ToString() + "," + talon.GetOutputVoltage().ToString() + "," + talon.GetOutputCurrent().ToString());
+           
+
                 //talon.SetVelocityMeasurementPeriod(CTRE.TalonSrx.VelocityMeasurementPeriod.Period_10Ms);
                 //  file.WriteLine(seconds.ToString() + "," + talon.GetPosition().ToString() + "," + talon.GetSpeed().ToString());
                 //}
