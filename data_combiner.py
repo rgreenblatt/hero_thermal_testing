@@ -55,8 +55,14 @@ with open(logger_name, 'rt') as logger_csvfile:
 
 
 				i+=1
-				k+=1
-				time_talon = float(talon_rows[i][0]) - zero_time_talon;
-				time_logger = float(logger_rows[k]['Latest: Time (s)']) - zero_time_logger;
+			
+
+				time_talon = float(talon_rows[i][0]) - zero_time_talon
+				while True:
+					if(abs(time_logger - time_talon) > abs(float(logger_rows[k + 1]['Latest: Time (s)']) - zero_time_logger - time_talon)):
+						k+=1
+					else:
+						break
+				time_logger = float(logger_rows[k]['Latest: Time (s)']) - zero_time_logger
 				
 
