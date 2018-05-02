@@ -18,7 +18,7 @@ namespace Hero_Simple_Application1
 
 			double time_per_voltage = 10.0;
 
-			double[] voltages = new double[] {0, 4, 6, 8, -10, 10, 3};
+			double[] voltages = new double[] {0, 4, 4, 4, 4, 4, 4};
             
 			/* simple counter to print and watch using the debugger */
             int counter = 0;
