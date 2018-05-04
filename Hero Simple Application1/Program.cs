@@ -15,11 +15,13 @@ namespace Hero_Simple_Application1
             talon.SetFeedbackDevice(TalonSrx.FeedbackDevice.CtreMagEncoder_Absolute);
             talon.SetSensorDirection(false);
             talon.SetVoltageRampRate(0.0f);
+            talon.EnableCurrentLimit(false);
+            double time_per_voltage = 5.0;
 
-			double time_per_voltage = 10.0;
+			double[] voltages = new double[] {0, 0, 0, 0, 0};
 
-			double[] voltages = new double[] {0, 4, 4, 4, 4, 4, 4};
-            
+            bool time_out = false;
+
 			/* simple counter to print and watch using the debugger */
             int counter = 0;
             /* loop forever */
@@ -40,19 +42,24 @@ namespace Hero_Simple_Application1
                 //{
                 double seconds = DateTime.Now.Minute * 60 + DateTime.Now.Second + DateTime.Now.Millisecond / 1000.0;
 				        
-				int index = (int)System.Math.Floor((seconds - time_last) / time_per_voltage );
+				UInt64 index = (UInt64)System.Math.Floor((seconds - time_last) / time_per_voltage );
 
 				double voltage = 0;
 	
-				if(index < voltages.Length)
+				if(index < (UInt64)voltages.Length)
 				{   
 					voltage = voltages[index];
 
 				}
+                else if(!time_out)
+                {
+                    voltage = voltages[voltages.Length - 1];
+                }
 				talon.Set((float)voltage); //low ish voltage
 	
 				//CTRE.TalonSrx.VelocityMeasurementPeriod.Period_100Ms period;
-                Debug.Print(seconds.ToString() + "," + talon.GetPosition().ToString() + "," + talon.GetSpeed().ToString() + "," + talon.GetOutputVoltage().ToString() + "," + talon.GetOutputCurrent().ToString());
+                Debug.Print(seconds.ToString() + "," + talon.GetPosition().ToString() + "," + talon.GetSpeed().ToString() + "," + talon.GetOutputVoltage().ToString() 
+                    + "," + talon.GetOutputCurrent().ToString() + "," + talon.GetBusVoltage().ToString());
            
 
                 //talon.SetVelocityMeasurementPeriod(CTRE.TalonSrx.VelocityMeasurementPeriod.Period_10Ms);
