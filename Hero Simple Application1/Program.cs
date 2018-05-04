@@ -16,11 +16,13 @@ namespace Hero_Simple_Application1
             talon.SetSensorDirection(false);
             talon.SetVoltageRampRate(0.0f);
             talon.EnableCurrentLimit(false);
-            double time_per_voltage = 5.0;
+            double time_per_voltage = 15;
 
-			double[] voltages = new double[] {0, 0, 0, 0, 0};
+			double[] voltages = new double[] {0, 0, 8};
 
             bool time_out = false;
+
+            bool continuous = false;
 
 			/* simple counter to print and watch using the debugger */
             int counter = 0;
@@ -41,20 +43,36 @@ namespace Hero_Simple_Application1
                 //using(System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Public\TestFolder\data.srv"))
                 //{
                 double seconds = DateTime.Now.Minute * 60 + DateTime.Now.Second + DateTime.Now.Millisecond / 1000.0;
-				        
-				UInt64 index = (UInt64)System.Math.Floor((seconds - time_last) / time_per_voltage );
-
-				double voltage = 0;
-	
-				if(index < (UInt64)voltages.Length)
-				{   
-					voltage = voltages[index];
-
-				}
-                else if(!time_out)
+                UInt64 index = (UInt64)System.Math.Floor((seconds - time_last) / time_per_voltage);
+                double voltage = 0;
+                if (continuous)
                 {
-                    voltage = voltages[voltages.Length - 1];
+                    
+                    if (index < (UInt64)voltages.Length - 1)
+                    {
+                        double value = (seconds - time_last) / time_per_voltage;
+                        voltage = (voltages[index + 1] - voltages[index]) * (value - index) + voltages[index];
+                    }
+                    else if (!time_out)
+                    {
+                        voltage = voltages[voltages.Length - 1];
+                    }
+
                 }
+                else
+                {
+                   
+                    if (index < (UInt64)voltages.Length)
+                    {
+                        voltage = voltages[index];
+                    }                
+                    else if (!time_out)
+                    {
+                        voltage = voltages[voltages.Length - 1];
+                    }
+
+                }
+                
 				talon.Set((float)voltage); //low ish voltage
 	
 				//CTRE.TalonSrx.VelocityMeasurementPeriod.Period_100Ms period;
