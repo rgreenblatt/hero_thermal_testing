@@ -16,18 +16,20 @@ namespace Hero_Simple_Application1
             talon.SetSensorDirection(false);
             talon.SetVoltageRampRate(0.0f);
             talon.EnableCurrentLimit(false);
-            double time_per_voltage = 15;
+            talon.ConfigLimitMode(TalonSrx.LimitMode.kLimitMode_SrxDisableSwitchInputs);
 
-			double[] voltages = new double[] {0, 0, 8};
+            double time_per_voltage = 30;
+
+            double[] voltages = new double[] { 0, 9, 3, 6, 8, 0};
 
             bool time_out = false;
 
             bool continuous = false;
 
-			/* simple counter to print and watch using the debugger */
+            /* simple counter to print and watch using the debugger */
             int counter = 0;
             /* loop forever */
-            double time_last = DateTime.Now.Minute * 60 + DateTime.Now.Second + DateTime.Now.Millisecond / 1000.0;
+            double time_last = DateTime.Now.Hour * 3600 + DateTime.Now.Minute * 60 + DateTime.Now.Second + DateTime.Now.Millisecond / 1000.0;
             while (true)
             {
                 /* print the three analog inputs as three columns */
@@ -42,7 +44,7 @@ namespace Hero_Simple_Application1
                 /* wait a bit */
                 //using(System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Public\TestFolder\data.srv"))
                 //{
-                double seconds = DateTime.Now.Minute * 60 + DateTime.Now.Second + DateTime.Now.Millisecond / 1000.0;
+                double seconds = DateTime.Now.Hour * 3600 + DateTime.Now.Minute * 60 + DateTime.Now.Second + DateTime.Now.Millisecond / 1000.0;
                 UInt64 index = (UInt64)System.Math.Floor((seconds - time_last) / time_per_voltage);
                 double voltage = 0;
                 if (continuous)
@@ -77,7 +79,7 @@ namespace Hero_Simple_Application1
 	
 				//CTRE.TalonSrx.VelocityMeasurementPeriod.Period_100Ms period;
                 Debug.Print(seconds.ToString() + "," + talon.GetPosition().ToString() + "," + talon.GetSpeed().ToString() + "," + talon.GetOutputVoltage().ToString() 
-                    + "," + talon.GetOutputCurrent().ToString() + "," + talon.GetBusVoltage().ToString());
+                    + "," + talon.GetOutputCurrent().ToString() + "," + talon.GetBusVoltage().ToString() + "," + talon.GetTemperature().ToString());
            
 
                 //talon.SetVelocityMeasurementPeriod(CTRE.TalonSrx.VelocityMeasurementPeriod.Period_10Ms);

@@ -1,0 +1,8 @@
+
+			double[] voltages = new double[] { 0, 0, 4, 0};
+
+            bool time_out = false;
+
+            bool continuous = true;
+
+setting 3
