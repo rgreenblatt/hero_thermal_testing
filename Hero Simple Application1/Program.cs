@@ -18,15 +18,14 @@ namespace Hero_Simple_Application1
             talon.EnableCurrentLimit(false);
             talon.ConfigLimitMode(TalonSrx.LimitMode.kLimitMode_SrxDisableSwitchInputs);
 
-            double time_per_voltage = 30;
 
+            double time_per_voltage = 10;
 
-            double[] voltages = new double[] { 0, 2};//  9, 3, 6, 8, 0 };
+            double[] voltages = new double[] {0, 12, 4, 0};
 
             bool time_out = false;
 
             bool continuous = false;
-
 
             /* simple counter to print and watch using the debugger */
             int counter = 0;
