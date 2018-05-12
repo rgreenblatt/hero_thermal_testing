@@ -1,34 +1,4 @@
-﻿Found debugger!
-
-Create TS.
-
- Loading start at 811fe20, end 8132870
-
-   Assembly: mscorlib (4.4.0.0)     Assembly: Microsoft.SPOT.Native (4.4.0.0)     Assembly: Microsoft.SPOT.Hardware (4.4.0.0)  
-   Assembly: Microsoft.SPOT.Graphics (4.4.0.0)     Assembly: Microsoft.SPOT.Hardware.SerialPort (4.4.0.0)  
-   Assembly: Microsoft.SPOT.Hardware.Usb (4.4.0.0)     Assembly: Microsoft.SPOT.Hardware.PWM (4.4.0.0)  
-   Assembly: ctre_netmf_native (1.3.0.0)  Loading Deployment Assemblies.
-
-Attaching deployed file.
-
-   Assembly: CTRE (4.4.0.23)  Attaching deployed file.
-
-   Assembly: Hero Simple Application1 (1.0.0.0)  Resolving.
-
-The debugging target runtime is loading the application assemblies and starting execution.
-Ready.
-
-'Microsoft.SPOT.Debugger.CorDebug.14.dll' (Managed): Loaded 'C:\Program Files (x86)\Microsoft .NET Micro Framework\v4.4\Assemblies\le\Microsoft.SPOT.Native.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
-'Microsoft.SPOT.Debugger.CorDebug.14.dll' (Managed): Loaded 'C:\Program Files (x86)\Microsoft .NET Micro Framework\v4.4\Assemblies\le\Microsoft.SPOT.Hardware.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
-'Microsoft.SPOT.Debugger.CorDebug.14.dll' (Managed): Loaded 'C:\Program Files (x86)\Microsoft .NET Micro Framework\v4.4\Assemblies\le\Microsoft.SPOT.Graphics.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
-'Microsoft.SPOT.Debugger.CorDebug.14.dll' (Managed): Loaded 'C:\Program Files (x86)\Microsoft .NET Micro Framework\v4.4\Assemblies\le\Microsoft.SPOT.Hardware.SerialPort.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
-'Microsoft.SPOT.Debugger.CorDebug.14.dll' (Managed): Loaded 'C:\Program Files (x86)\Microsoft .NET Micro Framework\v4.4\Assemblies\le\Microsoft.SPOT.Hardware.Usb.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
-'Microsoft.SPOT.Debugger.CorDebug.14.dll' (Managed): Loaded 'C:\Program Files (x86)\Microsoft .NET Micro Framework\v4.4\Assemblies\le\Microsoft.SPOT.Hardware.PWM.dll', Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
-'Microsoft.SPOT.Debugger.CorDebug.14.dll' (Managed): Loaded 'C:\Users\Public\Documents\Cross The Road Electronics\HERO\HERO SDK\Assemblies\v4.4\le\..\ctre_netmf_native.dll', Symbols loaded.
-'Microsoft.SPOT.Debugger.CorDebug.14.dll' (Managed): Loaded 'C:\Users\Public\Documents\Cross The Road Electronics\HERO\HERO SDK\Assemblies\v4.4\le\CTRE.dll', Symbols loaded.
-'Microsoft.SPOT.Debugger.CorDebug.14.dll' (Managed): Loaded 'E:\Users\green\Documents\Visual Studio 2015\Projects\hero_thermal_testing\Hero Simple Application1\bin\Debug\le\Hero Simple Application1.exe', Symbols loaded.
-The thread '<No Name>' (0x2) has exited with code 0 (0x0).
-38399.062,-939.562,0.000,0.000,0.000,12.850,21.613
+﻿38399.062,-939.562,0.000,0.000,0.000,12.850,21.613
 38399.082,-939.562,0.000,0.000,0.000,12.850,21.613
 38399.093,-939.562,0.000,0.000,0.000,12.850,21.613
 38399.109,-939.562,0.000,0.000,0.000,12.850,21.613
@@ -70989,4 +70959,3 @@ The thread '<No Name>' (0x2) has exited with code 0 (0x0).
 39518.359,-2048.000,-10925.392,8.038,10.750,11.900,33.871
 39518.375,-2048.000,-10927.148,7.990,10.750,11.950,33.871
 39518.390,-2048.000,-10928.906,7.920,10.750,11.950,33.871
-The program '[45] Micro Framework application: Managed' has exited with code 0 (0x0).
