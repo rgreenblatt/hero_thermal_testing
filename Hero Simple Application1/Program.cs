@@ -19,9 +19,9 @@ namespace Hero_Simple_Application1
             talon.ConfigLimitMode(TalonSrx.LimitMode.kLimitMode_SrxDisableSwitchInputs);
 
 
-            double time_per_voltage = 10;
+            double time_per_voltage = 30;
 
-            double[] voltages = new double[] {0, 12, 4, 0};
+            double[] voltages = new double[] { 0, 2.5, 1, 2, 2.5, 0};
 
             bool time_out = false;
 
