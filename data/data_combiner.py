@@ -29,6 +29,7 @@ with open(logger_name, 'rt', encoding='utf-8') as csvfile:
 		logger_count += 1
 
 
+sum_RPM = 0
 with open(logger_name, 'rt', encoding='utf-8') as logger_csvfile:
 	logger_reader = csv.DictReader(logger_csvfile, delimiter=',')
 	logger_rows = list(logger_reader)
@@ -37,11 +38,12 @@ with open(logger_name, 'rt', encoding='utf-8') as logger_csvfile:
 		talon_reader = csv.reader(talon_csvfile, delimiter=',')
 		talon_rows = list(talon_reader)
 		with open(out_name, 'w') as csvfile:
-			fieldnames = ['time_talon', 'time_logger', 'temp1', 'temp2', 'temp3', 'force', 'voltage', 'current', 'RPM']
+			fieldnames = ['time_talon', 'time_logger', 'temp1', 'temp2', 'temp3', 'force', 'voltage', 'current', 'RPM', 'bus_voltage']
 
 			writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
 			time_talon = 0.0	
+			time_talon_last = 0.0
 			time_logger = 0.0	
 
 			zero_time_talon = float(talon_rows[talon_count][0])
@@ -52,12 +54,16 @@ with open(logger_name, 'rt', encoding='utf-8') as logger_csvfile:
 			k = logger_count
 
 			force_conv_factor = .0565		
-			RPM_conv_factor = 600.0 / 4096.0
+			RPM_conv_factor = 1
 			writer.writeheader()
 			while time_talon < trial_length +1.0:
-			
+		
 
-				writer.writerow({'time_talon': time_talon, 'time_logger': time_logger, 'temp1': float(logger_rows[k]['Latest: Temperature 1 (°C)']) + 273.15, 'temp2': float(logger_rows[k]['Latest: Temperature 2 (°C)']) + 273.15,'temp3': float(logger_rows[k]['Latest: Temperature 3 (°C)']) + 273.15,'force': float(logger_rows[k]['Latest: Force (N)']) * force_conv_factor, 'voltage': talon_rows[i][3], 'current': talon_rows[i][4],'RPM': float(talon_rows[i][2]) * RPM_conv_factor })
+				sum_RPM += float(talon_rows[i][2]) * RPM_conv_factor /60.0  * (time_talon - time_talon_last)
+				time_talon_last = time_talon
+
+				print(sum_RPM, " and ", talon_rows[i][1])
+				writer.writerow({'time_talon': time_talon, 'time_logger': time_logger, 'temp1': float(logger_rows[k]['Latest: Temperature 1 (°C)']) + 273.15, 'temp2': float(logger_rows[k]['Latest: Temperature 2 (°C)']) + 273.15,'temp3': float(logger_rows[k]['Latest: Temperature 3 (°C)']) + 273.15,'force': float(logger_rows[k]['Latest: Force (N)']) * force_conv_factor, 'voltage': talon_rows[i][3], 'current': talon_rows[i][4],'RPM': float(talon_rows[i][2]) * RPM_conv_factor, 'bus_voltage': talon_rows[i][5] })
 
 
 				i+=1

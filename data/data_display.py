@@ -79,6 +79,14 @@ def savitzky_golay(y, window_size, order, deriv=0, rate=1):
     return np.convolve( m[::-1], y, mode='valid')
 
 
+
+def moving_average(a, n=3) :
+    ret = np.cumsum(a, dtype=float)
+    ret[n:] = ret[n:] - ret[:-n]
+    return ret[n - 1:] / n
+
+
+
 file_name =  str(sys.argv[1])
 
 temp1 = []
@@ -91,6 +99,7 @@ time_talon = []
 force = []
 
 voltage = []
+bus_voltage = []
 
 current = []
 
@@ -107,36 +116,64 @@ with open(file_name, 'rt') as csvfile:
 		time_logger.append(float(row['time_logger']))
 		force.append(float(row['force']))
 		voltage.append(float(row['voltage']))
+		bus_voltage.append(float(row['bus_voltage']))
 		current.append(float(row['current']))
 		RPM.append(float(row['RPM']))
 	
 #for volt in time_talon:
 #	print(volt)
 
-voltage = savitzky_golay(np.array(voltage), 101, 3)
-current = savitzky_golay(np.array(current), 101, 3)
-RPM = savitzky_golay(np.array(RPM), 101, 3)
-force = savitzky_golay(np.array(force), 101, 1)
+#voltage = savitzky_golay(np.array(voltage), 101, 3)
+#current = savitzky_golay(np.array(current), 101, 3)
+#RPM = savitzky_golay(np.array(RPM), 101, 3)
+force = np.array(force)
+
+print(force.size)
+force = moving_average(force, 1000)    #savitzky_golay(np.array(force), 101, 3)
+
+
+
 temp1 = np.array(temp1)
 temp2 = np.array(temp2)
 temp3 = np.array(temp3)
-time_talon = np.array(time_talon)
+time_talon = np.array(time_talon)[500:-499]
+
+print(time_talon.size)
+print(force.size)
 time_logger = np.array(time_logger)
 force = np.array(force)
 voltage = np.array(voltage)
-current = np.array(current)
-RPM = np.array(RPM)
+bus_voltage = moving_average(np.array(bus_voltage), 1000)
+current = moving_average(np.array(current), 1000)
+RPM = moving_average(np.array(RPM), 1000)
 
 
 
 import math
 
-plt.plot(time_talon[::3], voltage[::3] * current[::3])
+plt.plot(time_talon[::3], bus_voltage[::3] * current[::3])
 plt.plot(time_talon[::3], RPM[::3]  * force[::3] * 2 * math.pi / 60.0)
 plt.show()
+
+
+plt.plot(time_talon[::3],  - RPM[::3]  * force[::3] * 2 * math.pi / 60.0 + (bus_voltage[::3] * current[::3]) )
+plt.show()
+
+
 
 plt.plot(time_talon[::3], force[::3])
 plt.show()
 
 plt.plot(time_talon[::3], RPM[::3])
+plt.show()
+
+plt.plot(time_talon[::3], voltage[::3])
+plt.show()
+
+
+plt.plot(time_talon[::3], bus_voltage[::3])
+plt.show()
+
+
+plt.plot(time_talon[::3], current[::3])
 plt.show()
