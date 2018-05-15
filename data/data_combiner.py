@@ -62,7 +62,13 @@ with open(logger_name, 'rt', encoding='utf-8') as logger_csvfile:
 				sum_RPM += float(talon_rows[i][2]) * RPM_conv_factor /60.0  * (time_talon - time_talon_last)
 				time_talon_last = time_talon
 
-				print(sum_RPM, " and ", talon_rows[i][1])
+				#print(sum_RPM, " and ", talon_rows[i][1])
+				
+				
+				if(i % 1000 == 0):
+					print(i)
+
+
 				writer.writerow({'time_talon': time_talon, 'time_logger': time_logger, 'temp1': float(logger_rows[k]['Latest: Temperature 1 (°C)']) + 273.15, 'temp2': float(logger_rows[k]['Latest: Temperature 2 (°C)']) + 273.15,'temp3': float(logger_rows[k]['Latest: Temperature 3 (°C)']) + 273.15,'force': float(logger_rows[k]['Latest: Force (N)']) * force_conv_factor, 'voltage': talon_rows[i][3], 'current': talon_rows[i][4],'RPM': float(talon_rows[i][2]) * RPM_conv_factor, 'bus_voltage': talon_rows[i][5] })
 
 
