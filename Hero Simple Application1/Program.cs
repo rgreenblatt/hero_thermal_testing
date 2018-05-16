@@ -20,7 +20,7 @@ namespace Hero_Simple_Application1
 
             double time_per_voltage = 20;
 
-            double[] voltages = new double[] { 0, 10 };
+            double[] voltages = new double[] { 0, 7};
 
             bool time_out = false;
 
