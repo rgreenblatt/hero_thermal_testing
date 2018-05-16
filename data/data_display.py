@@ -129,51 +129,89 @@ with open(file_name, 'rt') as csvfile:
 force = np.array(force)
 
 print(force.size)
-force = moving_average(force, 1000)    #savitzky_golay(np.array(force), 101, 3)
+#force = moving_average(force, 100)    #savitzky_golay(np.array(force), 101, 3)
 
 
 
 temp1 = np.array(temp1)
 temp2 = np.array(temp2)
 temp3 = np.array(temp3)
-time_talon = np.array(time_talon)[500:-499]
+time_talon = np.array(time_talon)
 
 print(time_talon.size)
 print(force.size)
 time_logger = np.array(time_logger)
 force = np.array(force)
 voltage = np.array(voltage)
-bus_voltage = moving_average(np.array(bus_voltage), 1000)
-current = moving_average(np.array(current), 1000)
-RPM = moving_average(np.array(RPM), 1000)
+bus_voltage = np.array(bus_voltage)#moving_average(np.array(bus_voltage), 1000)
+current = np.array(current)#moving_average(np.array(current), 1000)
+RPM = np.array(RPM)
 
 
 
 import math
+
+
+
+
 
 plt.plot(time_talon[::3], bus_voltage[::3] * current[::3])
 plt.plot(time_talon[::3], RPM[::3]  * force[::3] * 2 * math.pi / 60.0)
 plt.show()
 
 
-plt.plot(time_talon[::3],  - RPM[::3]  * force[::3] * 2 * math.pi / 60.0 + (bus_voltage[::3] * current[::3]) )
+
+
+
+
+
+plt.plot(time_talon[::3][50:-49], moving_average(- RPM[::3]  * force[::3] * 2 * math.pi / 60.0 + (bus_voltage[::3] * current[::3]), 100))
 plt.show()
 
 
+cut_begin =  float(raw_input("begin: "))
+cut_end =  float(raw_input("end: "))
 
-plt.plot(time_talon[::3], force[::3])
+print(np.nonzero(time_talon > cut_begin)[0][0])
+print(np.nonzero(time_talon > cut_end)[0][0])
+
+
+plt.plot(time_talon[np.nonzero(time_talon > cut_begin)[0][0]:np.nonzero(time_talon > cut_end)[0][0]], (- RPM  * force * 2 * math.pi / 60.0 + (bus_voltage * current))[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])
+
 plt.show()
 
-plt.plot(time_talon[::3], RPM[::3])
+plt.plot(time_talon[np.nonzero(time_talon > cut_begin)[0][0]:np.nonzero(time_talon > cut_end)[0][0]], (voltage)[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])
+
 plt.show()
 
-plt.plot(time_talon[::3], voltage[::3])
-plt.show()
+print("avg waste watts", np.average((- RPM  * force * 2 * math.pi / 60.0 + bus_voltage * current)[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]]))
+
+print("avg RPM", np.abs(np.average(RPM[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])))
+
+print("avg current", np.average(current[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]]))
+print("avg voltage", np.average(voltage[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]]))
+print("avg force", abs(np.average(force[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])))
+
+import os 
+print(str(os.getcwd()) + "/" + file_name)
+
+print(str(np.average((- RPM  * force * 2 * math.pi / 60.0 + bus_voltage * current)[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])) + ", " + str(np.abs(np.average(RPM[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]]))) + ", " + str(np.average(current[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])) + ", " + str(np.average(voltage[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])) + ", " + str(abs(np.average(force[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]]))) + ", " +str(os.getcwd()) + "/" + file_name)
 
 
-plt.plot(time_talon[::3], bus_voltage[::3])
-plt.show()
+
+#plt.plot(time_talon[::3], force[::3])
+#plt.show()
+
+#plt.plot(time_talon[::3], RPM[::3])
+#plt.show()
+
+#plt.plot(time_talon[::3], voltage[::3])
+#plt.show()
 
 
-plt.plot(time_talon[::3], current[::3])
-plt.show()
+#plt.plot(time_talon[::3], bus_voltage[::3])
+#plt.show()
+
+
+#plt.plot(time_talon[::3], current[::3])
+#plt.show()
