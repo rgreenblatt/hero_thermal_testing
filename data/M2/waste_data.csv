@@ -1,8 +1,7 @@
-"waste_watts", "RPM", "current", "voltage", "force", "file_address"
+"waste_watts","RPM","current","voltage","force","file_address"
 57.9762016145, 14667.3701974, 14.8028651945, 10.9773680042, 0.0750350941157, /home/ryan/Documents/hero_thermal_testing/data/M2/10v_setting_1/out_1.csv
 75.0189106929, 14626.4225724, 15.5359339522, 10.9715364872, 0.0636219616821, /home/ryan/Documents/hero_thermal_testing/data/M2/10v_setting_1/out_2.csv
 75.0217465075, 14809.7621262, 16.045552711, 10.9762343705, 0.0723081387476, /home/ryan/Documents/hero_thermal_testing/data/M2/11v_setting_1/out_1.csv
-100.152425938, 14510.2210849, 15.5235055724, 10.9772179219, 0.0500855055468, /home/ryan/Documents/hero_thermal_testing/data/M2/11v_setting_1/out_3.csv
 66.8861931513, 14930.0107401, 15.7748989835, 10.9772400246, 0.0716851230386, /home/ryan/Documents/hero_thermal_testing/data/M2/11v_setting_1/out_5.csv
 11.8861609431, 0.0, 1.0, 1.24582228049, 0.0545304755006, /home/ryan/Documents/hero_thermal_testing/data/M2/1.25v_stall/out_1.csv
 11.8205540264, 0.0, 0.999043798588, 1.24900954127, 0.0299281600018, /home/ryan/Documents/hero_thermal_testing/data/M2/1.25v_stall/out_2.csv
