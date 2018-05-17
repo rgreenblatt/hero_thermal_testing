@@ -169,6 +169,9 @@ plt.plot(time_talon[::3][50:-49], moving_average(- RPM[::3]  * force[::3] * 2 * 
 plt.show()
 
 
+plt.plot(time_talon[::3], RPM[::3])
+plt.show()
+
 cut_begin =  float(raw_input("begin: "))
 cut_end =  float(raw_input("end: "))
 
@@ -183,6 +186,12 @@ plt.show()
 plt.plot(time_talon[np.nonzero(time_talon > cut_begin)[0][0]:np.nonzero(time_talon > cut_end)[0][0]], (voltage)[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])
 
 plt.show()
+
+
+plt.plot(time_talon[np.nonzero(time_talon > cut_begin)[0][0]:np.nonzero(time_talon > cut_end)[0][0]], (RPM)[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])
+
+plt.show()
+
 
 print("avg waste watts", np.average((- RPM  * force * 2 * math.pi / 60.0 + bus_voltage * current)[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]]))
 

@@ -60,10 +60,10 @@ independent = np.array([(np.array(z_a) + np.array(y_a) *  np.array(f_a) * 2 * ma
 
 
 
-def func(data, a, c):
-	return data[0] * data[0] *  a + data[1] * c
+def func(data, a, b, c):
+	return data[0] * data[0] *  a + data[1] * c + data[1] * data[1] * b
 
-guess = ( 0.055401662, 0.001333333 )
+guess = ( 0.055401662,.0000001, 0.001333333 )
 
 
 params, pcov = optimize.curve_fit(func, independent, z_a, guess)
@@ -76,7 +76,7 @@ Y = np.arange(0, 17000, 170)
 
 X, Y = np.meshgrid(X, Y)
 
-Z = X * X * params[0] +  +params[1] *Y
+Z = X * X * params[0]  + params[1] * Y * Y+ params[2] * Y 
 
 ax.plot_wireframe(X, Y, Z)
 
