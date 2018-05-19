@@ -152,8 +152,45 @@ RPM = np.array(RPM)
 import math
 
 
+plt.title("Bus Voltage")
+plt.plot(time_talon[::3], bus_voltage[::3])
+plt.show()
 
 
+plt.title("RPM")
+plt.plot(time_talon[::3], RPM[::3])
+plt.show()
+
+plt.title("force")
+plt.plot(time_talon[::3], force[::3])
+plt.show()
+
+plt.title("ma force")
+plt.plot(time_talon[::3][50:-49], moving_average(force[::3], 100))
+plt.show()
+
+
+plt.title("current")
+plt.plot(time_talon[::3], current[::3])
+plt.show()
+
+
+plt.title("voltage")
+plt.plot(time_talon[::3], voltage[::3])
+plt.show()
+
+
+plt.title("temp1")
+plt.plot(time_talon[::3], temp1[::3])
+plt.show()
+
+plt.title("temp2")
+plt.plot(time_talon[::3], temp2[::3])
+plt.show()
+
+plt.title("temp3")
+plt.plot(time_talon[::3], temp3[::3])
+plt.show()
 
 plt.plot(time_talon[::3], bus_voltage[::3] * current[::3])
 plt.plot(time_talon[::3], RPM[::3]  * force[::3] * 2 * math.pi / 60.0)
@@ -168,59 +205,61 @@ plt.show()
 plt.plot(time_talon[::3][50:-49], moving_average(- RPM[::3]  * force[::3] * 2 * math.pi / 60.0 + (bus_voltage[::3] * current[::3]), 100))
 plt.show()
 
-
-plt.plot(time_talon[::3], RPM[::3])
-plt.show()
-
-cut_begin =  float(raw_input("begin: "))
-cut_end =  float(raw_input("end: "))
-
-print(np.nonzero(time_talon > cut_begin)[0][0])
-print(np.nonzero(time_talon > cut_end)[0][0])
+if('True' == sys.argv[2]):
 
 
-plt.plot(time_talon[np.nonzero(time_talon > cut_begin)[0][0]:np.nonzero(time_talon > cut_end)[0][0]], (- RPM  * force * 2 * math.pi / 60.0 + (bus_voltage * current))[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])
+	plt.plot(time_talon[::3], RPM[::3])
+	plt.show()
 
-plt.show()
+	cut_begin =  float(raw_input("begin: "))
+	cut_end =  float(raw_input("end: "))
 
-plt.plot(time_talon[np.nonzero(time_talon > cut_begin)[0][0]:np.nonzero(time_talon > cut_end)[0][0]], (voltage)[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])
-
-plt.show()
-
-
-plt.plot(time_talon[np.nonzero(time_talon > cut_begin)[0][0]:np.nonzero(time_talon > cut_end)[0][0]], (RPM)[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])
-
-plt.show()
+	print(np.nonzero(time_talon > cut_begin)[0][0])
+	print(np.nonzero(time_talon > cut_end)[0][0])
 
 
-print("avg waste watts", np.average((- RPM  * force * 2 * math.pi / 60.0 + bus_voltage * current)[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]]))
+	plt.plot(time_talon[np.nonzero(time_talon > cut_begin)[0][0]:np.nonzero(time_talon > cut_end)[0][0]], (- RPM  * force * 2 * math.pi / 60.0 + (bus_voltage * current))[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])
 
-print("avg RPM", np.abs(np.average(RPM[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])))
+	plt.show()
 
-print("avg current", np.average(current[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]]))
-print("avg voltage", np.average(voltage[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]]))
-print("avg force", abs(np.average(force[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])))
+	plt.plot(time_talon[np.nonzero(time_talon > cut_begin)[0][0]:np.nonzero(time_talon > cut_end)[0][0]], (voltage)[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])
 
-import os 
-print(str(os.getcwd()) + "/" + file_name)
-
-print(str(np.average((- RPM  * force * 2 * math.pi / 60.0 + bus_voltage * current)[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])) + ", " + str(np.abs(np.average(RPM[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]]))) + ", " + str(np.average(current[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])) + ", " + str(np.average(voltage[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])) + ", " + str(abs(np.average(force[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]]))) + ", " +str(os.getcwd()) + "/" + file_name)
+	plt.show()
 
 
+	plt.plot(time_talon[np.nonzero(time_talon > cut_begin)[0][0]:np.nonzero(time_talon > cut_end)[0][0]], (RPM)[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])
 
-#plt.plot(time_talon[::3], force[::3])
-#plt.show()
-
-#plt.plot(time_talon[::3], RPM[::3])
-#plt.show()
-
-#plt.plot(time_talon[::3], voltage[::3])
-#plt.show()
+	plt.show()
 
 
-#plt.plot(time_talon[::3], bus_voltage[::3])
-#plt.show()
+	print("avg waste watts", np.average((- RPM  * force * 2 * math.pi / 60.0 + bus_voltage * current)[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]]))
+
+	print("avg RPM", np.abs(np.average(RPM[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])))
+
+	print("avg current", np.average(current[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]]))
+	print("avg voltage", np.average(voltage[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]]))
+	print("avg force", abs(np.average(force[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])))
+
+	import os 
+	print(str(os.getcwd()) + "/" + file_name)
+
+	print(str(np.average((- RPM  * force * 2 * math.pi / 60.0 + bus_voltage * current)[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])) + ", " + str(np.abs(np.average(RPM[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]]))) + ", " + str(np.average(current[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])) + ", " + str(np.average(voltage[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]])) + ", " + str(abs(np.average(force[np.nonzero(time_talon > cut_begin)[0][0] : np.nonzero(time_talon > cut_end)[0][0]]))) + ", " +str(os.getcwd()) + "/" + file_name)
 
 
-#plt.plot(time_talon[::3], current[::3])
-#plt.show()
+
+	#plt.plot(time_talon[::3], force[::3])
+	#plt.show()
+
+	#plt.plot(time_talon[::3], RPM[::3])
+	#plt.show()
+
+	#plt.plot(time_talon[::3], voltage[::3])
+	#plt.show()
+
+
+	#plt.plot(time_talon[::3], bus_voltage[::3])
+	#plt.show()
+
+
+	#plt.plot(time_talon[::3], current[::3])
+	#plt.show()

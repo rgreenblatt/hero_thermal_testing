@@ -182,12 +182,11 @@ print( wl_p)
 
 eff = 0.8
 
-wl_f = np.hstack((wl_p, z_a * eff))
-print(wl_f)
-c_f  = np.hstack((c_p, x_a))
-s_f = np.hstack((s_p, y_a))
-v_f = np.hstack((v_p,k_a))
-b_f = np.hstack((b_p,b_a))
+wl_f = np.hstack((z_a * eff,np.hstack((z_a * eff,np.hstack((z_a * eff, np.hstack((z_a * eff, wl_p))))))))
+c_f = np.hstack((x_a,np.hstack((x_a,np.hstack((x_a, np.hstack((x_a, c_p))))))))
+s_f = np.hstack((y_a,np.hstack((y_a,np.hstack((y_a, np.hstack((y_a, s_p))))))))
+v_f = np.hstack((k_a,np.hstack((k_a,np.hstack((k_a, np.hstack((k_a,v_p))))))))
+b_f = np.hstack((b_a,np.hstack((b_a,np.hstack((b_a, np.hstack((b_a,b_p))))))))
 
 print("s1: ",  wl_f.shape, "s2: ",  c_f.shape, "s3: ",  s_f.shape, "s1: ",  v_f.shape)
 
@@ -218,18 +217,18 @@ print(params)
 independent3 = np.array([c_f, s_f, v_f, b_f])
 
 
-guess = (8.49558651e-02, -3.18269661e-07, 1.78534872e-03, 7.48935360e+00, -2.20884602e-02) 
+guess = (8.49558651e-02, -3.18269661e-07, 1.78534872e-03, 7.48935360e+00, -2.20884602e-02, 1.15) 
 
 
-def func(data, a, b, c, d, e):
+def func1(data, a, b, c, d, e, f):
 
-	curr_term = np.where(data[2] > 0.2, data[0] * data[0] *  data[3] / data[2], 0)
+	curr_term = np.where(data[2] > 0.2, data[0] * data[0] *  data[3] / data[2] ** f, 0)
 
 	return curr_term * a + data[1] * c + data[1] * data[1] * b + data[2] *d  +data[2] *data[2] *e
 
-params, pcov = optimize.curve_fit(func, independent3, wl_f, guess)
+params1, pcov = optimize.curve_fit(func1, independent3, wl_f, guess)
 print("with curr term, quadratic v fit")
-print(params)
+print(params1)
 
 
 
@@ -237,10 +236,10 @@ print(params)
 independent3 = np.array([c_f, s_f, v_f, b_f])
 
 
-guess = (8.49558651e-02, -3.18269661e-07, 1.78534872e-03) 
+guess = (1.05, -3.18269661e-07, 1.78534872e-03) 
 
 
-def func(data, a, b, c):
+def func2(data, a, b, c):
 	d = 0
 	e = 0
 
@@ -248,10 +247,58 @@ def func(data, a, b, c):
 
 	return curr_term * a + data[1] * c + data[1] * data[1] * b + data[2] *d  +data[2] *data[2] *e
 
-params, pcov = optimize.curve_fit(func, independent3, wl_f, guess)
+params2, pcov = optimize.curve_fit(func2, independent3, wl_f, guess)
 print("with curr term and extra div no quadratic v fit")
-print(params)
+print(params2)
 
+
+independent4 = np.array([c_f, s_f, v_f, b_f])
+
+
+guess = (8.49558651e-02, -3.18269661e-07, 1.78534872e-03) 
+
+
+def func3(data, a, b, c):
+
+	d = 1.5
+
+	curr_term = np.where(data[2] > 0.2, data[0] * data[0] *  data[3] / (data[2] ** d), 0)
+
+	return curr_term * a + data[1] * c + data[1] * data[1] * b 
+
+params3, pcov = optimize.curve_fit(func3, independent3, wl_f, guess, maxfev = 10000)
+print("with curr term and extra div ^2 no quadratic v fit")
+print(params3)
+
+
+
+
+
+
+guess = (8.49558651e-02, -3.18269661e-07, 1.78534872e-03, 0.0001) 
+
+
+def func4(data, a, b, c, d):
+	e = 0
+
+	curr_term = np.where(data[2] > 0.2, data[0] * data[0] *  data[3] / (data[2] * data[2]), 0)
+
+	return curr_term * a + data[1] * c + data[1] * data[1] * b + data[2] *d  +data[2] *data[2] *e
+
+params4, pcov = optimize.curve_fit(func4, independent3, wl_f, guess)
+print("with curr term and extra div, linear v fit")
+print(params4)
+
+
+
+
+mse_1 = (((func1(independent3, params1[0],  params1[1], params1[2],  params1[3], params1[4], params1[5])) - wl_f)**2).mean(axis=None)
+mse_2 = ((func2(independent3, params2[0],  params2[1],  params2[2]) - wl_f)**2).mean(axis=None)
+mse_3 = ((func3(independent3, params3[0],  params3[1], params3[2]) - wl_f)**2).mean(axis=None)
+mse_4 = ((func4(independent3, params4[0],  params4[1], params4[2], params4[3]) - wl_f)**2).mean(axis=None)
+	
+
+print("mse 1: ", mse_1, " mse 2: ", mse_2, " mse 3: ", mse_3, " mse 4: ", mse_4)
 
 
 
