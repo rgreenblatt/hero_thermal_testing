@@ -175,6 +175,19 @@ plt.plot(time_talon[::3], current[::3])
 plt.show()
 
 
+
+plt.title("force * 100 v current v voltage")
+plt.plot(time_talon[::3], force[::3] * 100)
+plt.plot(time_talon[::3], current[::3])
+plt.plot(time_talon[::3], voltage[::3])
+plt.show()
+
+plt.title("rpm / 1000 v current v voltage")
+plt.plot(time_talon[::3], RPM[::3] /  1000)
+plt.plot(time_talon[::3], current[::3])
+plt.plot(time_talon[::3], voltage[::3])
+plt.show()
+
 plt.title("voltage")
 plt.plot(time_talon[::3], voltage[::3])
 plt.show()
