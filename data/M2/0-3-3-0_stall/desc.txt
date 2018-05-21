@@ -1,0 +1,10 @@
+   double time_per_voltage = 30;
+
+
+            double[] voltages = new double[] { 0, 3, 3, 0};//  9, 3, 6, 8, 0 };
+
+            bool time_out = false;
+
+            bool continuous = false;
+
+stall

@@ -21,7 +21,8 @@ is_max_rpm = 4194.141
 is_max_rpm_time =  60.103000000000065
 is_start = 8.2
 
-impose_replace_set = [[[0.0, 100.0], [-1750.0, -1750.0]]]
+impose_replace_set = [[[0.0, 1000000.0], [-6200, -6200]]]
+#[[[1.0, 29.0], [-10800.0, -10800.0]], [[31.0, 59.0], [-3200.0, -3200.0]], [[61.0, 89.0], [-7200.0, -7200.0]],  [[91.0, 119.0], [-9900.0, -10500.0]]]
 # [[[0.0, is_start], [0.0, 0.0]], [[is_start, is_max_rpm_time], [0.0, -is_max_rpm]], [[is_max_rpm_time, (is_max_rpm_time - is_start) * 2 + is_start], [-is_max_rpm, 0.0]], [[(is_max_rpm_time - is_start) * 2 + is_start, 100000], [0.0, 0.0]]]
 
 max_RPM = 0 
@@ -134,7 +135,7 @@ else:
 					
 
 	
-					if(i != talon_count and abs(last_RPM) - abs(rpm) > 1000 and i <  10000000):
+					if(i != talon_count and abs(last_RPM) - abs(rpm) > 10 and (abs(time_talon % 30.0) < 2.5 or abs(time_talon % 30.0) > 27.5) and i <  10000000):
 						print("last rpm: ", last_RPM, "rpm: ", rpm, " row: ", i)
 
 						rpm = last_RPM

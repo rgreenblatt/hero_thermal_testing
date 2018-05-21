@@ -13,3 +13,21 @@
 39.0118745231, 5923.97651036, 5.26854710058, 4.98970867034, 0.0372578290055, /home/ryan/Documents/hero_thermal_testing/data/M2/5v_setting_1/out_3.csv
 79.7140699353, 14911.2342675, 14.7252651715, 10.9773058124, 0.059259489129, /home/ryan/Documents/hero_thermal_testing/data/M2/10v_setting_1/out_3.csv
 68.8726231623, 8419.62618672, 8.15979117415, 6.98507799986, 0.0260049843015, /home/ryan/Documents/hero_thermal_testing/data/M2/10v_setting_1/out_4.csv
+67.2898265256, 0.00977590884428, 6.0421866522, 2.4940423223, 0.129074318961, /home/ryan/Documents/hero_thermal_testing/data/M2/custom_5/out_2.csv
+7.19044572553, 0.0, 0.624718785152, 1.00048818898, 0.0480427561777, /home/ryan/Documents/hero_thermal_testing/data/M2/custom_5/out_2.csv
+39.284517285, 0.0, 3.48292580101, 1.99538560989, 0.0887652136482, /home/ryan/Documents/hero_thermal_testing/data/M2/custom_5/out_2.csv
+63.2644836804, 0.0, 5.7012521103, 2.49421328081, 0.115843154906, /home/ryan/Documents/hero_thermal_testing/data/M2/custom_5/out_2.csv
+64.1176152333, 0.0, 5.76222596965, 2.49456998314, 0.130134700567, /home/ryan/Documents/hero_thermal_testing/data/M2/custom_5/out_3.csv
+5.85405528981, 0.0, 0.509144625774, 0.999817107485, 0.0518078053365, /home/ryan/Documents/hero_thermal_testing/data/M2/custom_5/out_3.csv
+38.0987162352, 0.0, 3.3832301632, 1.99504727068, 0.0933082799698, /home/ryan/Documents/hero_thermal_testing/data/M2/custom_5/out_3.csv
+62.7815136389, 0.0, 5.66760404949, 2.49378121485, 0.121344377162, /home/ryan/Documents/hero_thermal_testing/data/M2/custom_5/out_3.csv
+67.7820198256, 0.0, 6.11424353206, 2.49525703037, 0.135759402484, /home/ryan/Documents/hero_thermal_testing/data/M2/custom_5/out_4.csv
+5.83084926884, 0.0, 0.507803712036, 0.998687289089, 0.0497742708718, /home/ryan/Documents/hero_thermal_testing/data/M2/custom_5/out_4.csv
+38.9846894323, 0.0, 3.47168353007, 1.99526644182, 0.0938958348506, /home/ryan/Documents/hero_thermal_testing/data/M2/custom_5/out_4.csv
+65.367138232, 0.0, 5.92321227477, 2.49451013514, 0.123345547633, /home/ryan/Documents/hero_thermal_testing/data/M2/custom_5/out_4.csv
+96.0000552573, 0.0, 8.26424850016, 2.99457688664, 0.165829021931, /home/ryan/Documents/hero_thermal_testing/data/M2/0-3-3-0 stall/out_1.csv
+97.7869169619, 0.000184227129338, 8.43789432177, 2.99418170347, 0.176667533841, /home/ryan/Documents/hero_thermal_testing/data/M2/0-3-3-0 stall/out_2.csv
+97.9132933375, 0.0, 8.46274076413, 2.9929343227, 0.171494721157, /home/ryan/Documents/hero_thermal_testing/data/M2/0-3-3-0 stall/out_3.csv
+11.7140409933, 0.0, 0.989728812918, 1.24886102056, 0.0300297442186, /home/ryan/Documents/hero_thermal_testing/data/M2/1.25v_stall/out_2.csv
+9.09896690373, 0.0, 0.724129623786, 1.24832791966, 0.0221215481554, /home/ryan/Documents/hero_thermal_testing/data/M2/1.25v_stall/out_3.csv
+10.06755537, 0.0, 0.81824143097, 1.24713710612, 0.0247117099997, /home/ryan/Documents/hero_thermal_testing/data/M2/1.25v_stall/out_4.csv
